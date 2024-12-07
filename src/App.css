@@ -18,3 +18,96 @@ body {
 
 /*  */
 
+.headline-medium {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+}
+
+.title-medium {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.title-small {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 38.28px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.team {
+  margin: 10px 0;
+}
+
+.gradient-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 166, 231, 1),
+    rgba(221, 3, 132, 1)
+  );
+}
+
+.court-info-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.court5 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 35px;
+  font-weight: 300;
+  line-height: 44.66px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 166, 231, 1);
+}
+
+.pink {
+  color: rgba(228, 0, 132, 1);
+}
+
+.game-length {
+  margin-top: 11px;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  border: 1px solid rgba(228, 0, 132, 1);
+  margin: 16px 0;
+  padding: 0 22px;
+  height: 55px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-left {
+  border-radius: 50px 0 0 50px;
+}
+
+.button-right {
+  border-radius: 0 50px 50px 0;
+  background-color: rgba(228, 0, 132, 1);
+}
+
+.avatar {
+  width: 91px;
+  height: 91px;
+  border-radius: 200px;
+}
