@@ -75,6 +75,7 @@ function App() {
 
   return (
     <div>
+      <NavBar />
       <h1 className='headline-medium'>Your Videometrics</h1>
       <h2 className='title-medium team'>Valhala Padel</h2>
       <div className='court-info-div'>
