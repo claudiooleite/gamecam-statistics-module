@@ -1,9 +1,11 @@
+/* Root Container */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 1rem;
 }
 
+/* Body Styles */
 body {
   min-width: 320px;
   min-height: 100vh;
@@ -11,14 +13,12 @@ body {
   box-sizing: border-box;
 }
 
-/* Resizing icons */
-
+/* Icon Resizing */
 .icon-large {
   font-size: 2.5em;
 }
 
-/*  */
-
+/* Typography */
 .headline-medium {
   font-family: "Archivo Black", sans-serif;
   font-weight: 400;
@@ -56,6 +56,7 @@ body {
   );
 }
 
+/* Court Info */
 .court-info-div {
   display: flex;
   justify-content: space-between;
@@ -82,6 +83,7 @@ body {
   margin-top: 11px;
 }
 
+/* Buttons */
 .button-div {
   display: flex;
   justify-content: center;
@@ -108,14 +110,20 @@ body {
   background-color: rgba(228, 0, 132, 1);
 }
 
+/* Avatar */
 .avatar {
   width: 91px;
   height: 91px;
   border-radius: 200px;
 }
 
-/* 4 cards layout */
+.card-grid-performance {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px; /* Adjust spacing between cards */
+}
 
+/* Card Layout */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -148,6 +156,7 @@ body {
   font-size: 1rem;
 }
 
+/* Performance */
 .performance {
   display: flex;
   flex-direction: column;
@@ -162,13 +171,71 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
+/* Charts */
 .charts {
   margin-top: 24px;
   margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* 3 cards per row for medium screens */
+    gap: 16px; /* Increase spacing between cards */
+  }
+
+  .card-small {
+    height: 220px; /* Adjust card height */
+  }
+
+  .button {
+    height: 60px; /* Increase button height */
+    width: auto; /* Adjust button width */
+  }
+
+  .headline-medium {
+    font-size: 32px; /* Larger font for headlines */
+  }
+
+  .wide{
+    height: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* 4 cards per row for large screens */
+  }
+
+  .card-small {
+    height: 250px; /* Larger card height */
+  }
+
+  .court5 {
+    font-size: 40px; /* Increase text size for large screens */
+  }
+
+  .title-medium {
+    font-size: 1.2rem; /* Larger text size */
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px; /* Larger avatar size */
+  }
+
+  .button {
+    padding: 0 30px; /* Adjust button padding */
+  }
 }

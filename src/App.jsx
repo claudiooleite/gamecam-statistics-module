@@ -153,7 +153,7 @@ function App() {
 
       <div>
         <h1 className='title-small' style={{ margin: '30px 0 24px 0' }}>Team Performance</h1>
-        <div className="card-grid" >
+        <div className="card-grid-performance" >
           <FlexibleCard title={`${data.teams.team1}`} className={'card-small'}>
             <div className='teams'>
               <div className='performance'>

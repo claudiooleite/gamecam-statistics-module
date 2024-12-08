@@ -49,3 +49,61 @@ picture {
 }
 
 /* ======================== */
+/* Default Styles */
+html {
+  font-size: 16px; /* Base font size */
+}
+
+.body {
+  font-size: 1rem; /* 16px */
+}
+
+.headline-medium {
+  font-size: 1.75rem; /* 28px */
+}
+
+.title-medium {
+  font-size: 1rem; /* 16px */
+}
+
+.title-small {
+  font-size: 1.875rem; /* 30px */
+}
+
+/* Medium Screens */
+@media (min-width: 768px) {
+  html {
+    font-size: 18px; /* Scale up base size */
+  }
+
+  .headline-medium {
+    font-size: 2rem; /* 36px (18 * 2) */
+  }
+
+  .title-medium {
+    font-size: 1.2rem; /* 21.6px */
+  }
+
+  .title-small {
+    font-size: 2.125rem; /* 38.25px */
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1024px) {
+  html {
+    font-size: 20px; /* Scale up base size further */
+  }
+
+  .headline-medium {
+    font-size: 2.5rem; /* 50px (20 * 2.5) */
+  }
+
+  .title-medium {
+    font-size: 1.4rem; /* 28px */
+  }
+
+  .title-small {
+    font-size: 2.5rem; /* 50px */
+  }
+}
