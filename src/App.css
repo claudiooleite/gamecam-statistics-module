@@ -8,6 +8,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 /* Resizing icons */
@@ -38,6 +39,7 @@ body {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 11px 0 40px 0;
 }
 
 .team {
@@ -110,4 +112,40 @@ body {
   width: 91px;
   height: 91px;
   border-radius: 200px;
+}
+
+/* 4 cards layout */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px; /* Adjust spacing between cards */
+}
+
+.card-small {
+  height: 194px;
+  margin-bottom: 0;
+}
+
+.sm-card-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.card-icon {
+  font-size: 2rem;
+  background-color:rgba(0, 166, 231, 1);
+  padding: 20px;
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 1);
+  
+}
+
+.card-data {
+  font-size: 1rem;
+
 }

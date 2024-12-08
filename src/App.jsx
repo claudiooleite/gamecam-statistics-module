@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import NavBar from './components/NavBar';
 import ChartCard from './components/charts/ChartCard';
 import TotalErrorsChart from './components/charts/TotalErrorsChart';
@@ -10,6 +12,16 @@ import './App.css'
 
 import { dummyData } from './data/dummyData';
 
+import { TbArrowsMove } from "react-icons/tb";
+
+import { BiError } from "react-icons/bi";
+
+import { GiPositionMarker } from "react-icons/gi";
+
+import { PiPersonSimpleRunLight } from "react-icons/pi";
+
+import { CiBasketball } from "react-icons/ci";
+
 import { Chart as ChartJS, CategoryScale, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
 // Register the necessary components
@@ -19,16 +31,50 @@ ChartJS.register(CategoryScale, LinearScale, ArcElement, BarElement, Title, Tool
 
 
 function App() {
-  const players = [
-    ...dummyData.match.teams[0].players,
-    ...dummyData.match.teams[1].players,
-  ];
+  const [data, setData] = useState({ players: {}, teams: [] })
+  const [error, setError] = useState(false)  // Case Error
+  const [loading, setLoading] = useState(true)
 
+  useEffect(() => {
+    setLoading(true)
+
+    id = setTimeout(() => {
+      setData(
+        {
+          players: [
+            ...dummyData.teams[0].players,
+            ...dummyData.teams[1].players,
+          ],
+          teams: {
+            team1: dummyData.teams[0].name,
+            team2: dummyData.teams[1].name,
+          },
+        }
+      )
+      setLoading(false)
+    }, 2000)
+
+    return () => clearTimeout(id)
+  }, [])
+
+  if (error) {
+    return (
+      <>
+        <h1>Failed to load page</h1>
+      </>
+    )
+  }
+
+  if (loading) {
+    return (
+      <>
+        <h1>loading...</h1>
+      </>
+    )
+  }
 
   return (
     <div>
-      <NavBar />
-
       <h1 className='headline-medium'>Your Videometrics</h1>
       <h2 className='title-medium team'>Valhala Padel</h2>
       <div className='court-info-div'>
@@ -56,29 +102,66 @@ function App() {
       </div>
 
       <div>
+
         <h1 className='title-small'>Player Analysis</h1>
-        <FlexibleCard title="Most offensive player">
-          <h1>{players[2].name}</h1>
-          <img src={players[2].image} className='avatar' style={{ border: `2px solid${players[2].color}` }} />
-          <h1>Team A</h1>
+        <FlexibleCard title="Most offensive player" className={"wide"}>
+          <h1 style={{ color: data.players[2].color }} className='title-medium'>{data.players[2].name}</h1>
+          <img src={data.players[2].image} className='avatar' style={{ border: `2px solid${data.players[2].color}` }} />
+          <h1 className='title-medium'>{data.teams.team2}</h1>
         </FlexibleCard>
         <FlexibleCard title="Most defensive player">
-
+          <h1 style={{ color: data.players[0].color }} className='title-medium'>{data.players[0].name}</h1>
+          <img src={data.players[0].image} className='avatar' style={{ border: `2px solid${data.players[0].color}` }} />
+          <h1 className='title-medium'>{data.teams.team1}</h1>
         </FlexibleCard>
+
+        <div className="card-grid">
+          <FlexibleCard title="Top Runner" className={'card-small'}>
+            <div className='sm-card-content'>
+              <PiPersonSimpleRunLight className="card-icon" />
+              <h1 style={{ color: data.players[0].color }} className="title-medium">{data.players[0].name}</h1>
+              <p className="card-data">{data.players[0].stats.runningDistance}m</p>
+            </div>
+          </FlexibleCard>
+
+          <FlexibleCard title="Most Shots" className={'card-small'}>
+            <div className='sm-card-content'>
+              <CiBasketball className="card-icon" />
+              <h1 style={{ color: data.players[1].color }} className="title-medium">{data.players[1].name}</h1>
+              <p className="card-data">{data.players[1].stats.shots}</p>
+            </div>
+          </FlexibleCard>
+
+          <FlexibleCard title="Least Errors" className={'card-small'}>
+            <div className='sm-card-content'>
+              <BiError className="card-icon" />
+              <h1 style={{ color: data.players[2].color }} className="title-medium">{data.players[2].name}</h1>
+              <p className="card-data">{data.players[2].stats.totalErrors}</p>
+            </div>
+          </FlexibleCard>
+
+          <FlexibleCard title="Best Position" className={'card-small'}>
+            <div className='sm-card-content'>
+              <TbArrowsMove className="card-icon" />
+              <h1 style={{ color: data.players[3].color }} className="title-medium">{data.players[3].name}</h1>
+              <p className="card-data">{data.players[3].stats.timeInDeadZone}</p>
+            </div>
+          </FlexibleCard>
+        </div>
       </div>
 
       <div>
         <h1 className='title-small'>Team Performance</h1>
         <ChartCard title="Total Errors">
-          <TotalErrorsChart players={players} />
+          <TotalErrorsChart players={data.players} />
         </ChartCard>
 
         <ChartCard title="Ball Possession">
-          <BallPossessionChart players={players} />
+          <BallPossessionChart players={data.players} />
         </ChartCard>
 
         <ChartCard title="Running Distance">
-          <RunningDistanceChart players={players} />
+          <RunningDistanceChart players={data.players} />
         </ChartCard>
       </div>
       <FlexibleCard>
