@@ -127,7 +127,7 @@ body {
   margin-bottom: 0;
 }
 
-.sm-card-content{
+.sm-card-content {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -138,14 +138,37 @@ body {
 
 .card-icon {
   font-size: 2rem;
-  background-color:rgba(0, 166, 231, 1);
+  background-color: rgba(0, 166, 231, 1);
   padding: 20px;
   border-radius: 50%;
   color: rgba(0, 0, 0, 1);
-  
 }
 
 .card-data {
   font-size: 1rem;
+}
 
+.performance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.teams {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.charts {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

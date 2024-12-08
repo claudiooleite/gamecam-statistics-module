@@ -52,7 +52,7 @@ function App() {
         }
       )
       setLoading(false)
-    }, 2000)
+    }, 1) // Change time for showing 
 
     return () => clearTimeout(id)
   }, [])
@@ -107,10 +107,10 @@ function App() {
         <h1 className='title-small'>Player Analysis</h1>
         <FlexibleCard title="Most offensive player" className={"wide"}>
           <h1 style={{ color: data.players[2].color }} className='title-medium'>{data.players[2].name}</h1>
-          <img src={data.players[2].image} className='avatar' style={{ border: `2px solid${data.players[2].color}` }} />
+          <img src={data.players[2].image} className='avatar' style={{ border: `2px solid${data.players[2].color}`, objectFit: 'cover' }} />
           <h1 className='title-medium'>{data.teams.team2}</h1>
         </FlexibleCard>
-        <FlexibleCard title="Most defensive player">
+        <FlexibleCard title="Most defensive player" className={"wide"}>
           <h1 style={{ color: data.players[0].color }} className='title-medium'>{data.players[0].name}</h1>
           <img src={data.players[0].image} className='avatar' style={{ border: `2px solid${data.players[0].color}` }} />
           <h1 className='title-medium'>{data.teams.team1}</h1>
@@ -152,23 +152,53 @@ function App() {
       </div>
 
       <div>
-        <h1 className='title-small'>Team Performance</h1>
-        <ChartCard title="Total Errors">
-          <TotalErrorsChart players={data.players} />
-        </ChartCard>
+        <h1 className='title-small' style={{ margin: '30px 0 24px 0' }}>Team Performance</h1>
+        <div className="card-grid" >
+          <FlexibleCard title={`${data.teams.team1}`} className={'card-small'}>
+            <div className='teams'>
+              <div className='performance'>
+                <img src={data.players[0].image} className='avatar' style={{ border: `2px solid${data.players[0].color}`, width: '73px', height: "73px" }} />
+                <h1 style={{ color: data.players[0].color }} className='title-medium'>{data.players[0].name}</h1>
+              </div>
+              <div className='performance'>
+                <img src={data.players[1].image} className='avatar' style={{ border: `2px solid${data.players[1].color}`, width: '73px', height: "73px" }} />
+                <h1 style={{ color: data.players[1].color }} className='title-medium'>{data.players[1].name}</h1>
+              </div>
+            </div>
 
-        <ChartCard title="Ball Possession">
-          <BallPossessionChart players={data.players} />
-        </ChartCard>
+          </FlexibleCard>
 
-        <ChartCard title="Running Distance">
-          <RunningDistanceChart players={data.players} />
-        </ChartCard>
+          <FlexibleCard title={`${data.teams.team2}`} className={'card-small'}>
+            <div className='teams'>
+              <div className='performance'>
+                <img src={data.players[2].image} className='avatar' style={{ border: `2px solid${data.players[2].color}`, width: '73px', height: "73px" }} />
+                <h1 style={{ color: data.players[2].color }} className='title-medium'>{data.players[2].name}</h1>
+              </div>
+              <div className='performance'>
+                <img src={data.players[3].image} className='avatar' style={{ border: `2px solid${data.players[3].color}`, width: '73px', height: "73px" }} />
+                <h1 style={{ color: data.players[3].color }} className='title-medium'>{data.players[3].name}</h1>
+              </div>
+            </div>
+
+          </FlexibleCard>
+        </div>
+        <div className='charts'>
+          <ChartCard title="Running Distance">
+            <RunningDistanceChart players={data.players} />
+          </ChartCard>
+
+          <ChartCard title="Total Errors">
+            <TotalErrorsChart players={data.players} />
+          </ChartCard>
+
+          <ChartCard title="Ball Possession">
+            <BallPossessionChart players={data.players} />
+          </ChartCard>
+        </div>
+        <FlexibleCard>
+          <Footer />
+        </FlexibleCard>
       </div>
-      <FlexibleCard>
-        <Footer />
-      </FlexibleCard>
-
     </div>
   )
 }
