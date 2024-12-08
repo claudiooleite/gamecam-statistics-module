@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     setLoading(true)
 
-    id = setTimeout(() => {
+    const id = setTimeout(() => {
       setData(
         {
           players: [
