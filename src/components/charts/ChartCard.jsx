@@ -1,4 +1,4 @@
-import "../../styles/ChartCard.css";
+import "../../styles/chartcard.css";
 
 const ChartCard = ({ title, children }) => {
     return (
