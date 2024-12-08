@@ -39,7 +39,11 @@ const BallPossessionChart = ({ players }) => {
         responsive: true,
     };
 
-    return <Doughnut data={chartData} options={options} />;
+    return (
+        <div style={{ position: 'relative', width: '250px', maxWidth: '600px', marginTop: '10px' }}>
+            <Doughnut data={chartData} options={options} />
+        </div>
+    )
 };
 
 export default BallPossessionChart;

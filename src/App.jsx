@@ -184,12 +184,40 @@ function App() {
         </div>
         <div className='charts'>
           <ChartCard title="Running Distance">
-            <RunningDistanceChart players={data.players} />
+            <div className="running-distance-container">
+              {/* Left: Player names */}
+              <div className="player-names">
+                {data.players.map((player, index) => (
+                  <div
+                    key={index}
+                    className="player-name"
+                    style={{ color: player.color }}
+                  >
+                    <p>{player.name}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Middle: Chart */}
+              <div className="chart">
+                <RunningDistanceChart players={data.players} />
+              </div>
+
+              {/* Right: Distances */}
+              <div className="distance-runs">
+                {data.players.map((player, index) => (
+                  <div key={index} className="distance-run">
+                    <p>{player.stats.runningDistance}m</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </ChartCard>
 
-          <ChartCard title="Total Errors">
+
+          {/* <ChartCard title="Total Errors">
             <TotalErrorsChart players={data.players} />
-          </ChartCard>
+          </ChartCard> */}
 
           <ChartCard title="Ball Possession">
             <BallPossessionChart players={data.players} />

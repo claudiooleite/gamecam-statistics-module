@@ -29,3 +29,23 @@
   align-items: center;
   justify-content: center;
 }
+
+.running-distance-container {
+  display: flex;
+  gap: 6px;
+}
+
+.player-names, .distance-runs{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 5px;
+}
+
+.player-names, .distance-runs p{
+  font-size: 14px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}

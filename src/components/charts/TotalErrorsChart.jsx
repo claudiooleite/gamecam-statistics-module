@@ -7,8 +7,9 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import the plugin
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
 
 const TotalErrorsChart = ({ players }) => {
     const labels = players.map((player) => player.name);
@@ -19,12 +20,14 @@ const TotalErrorsChart = ({ players }) => {
             {
                 label: 'Net Errors',
                 data: players.map((player) => player.stats.netErrors),
-                backgroundColor: 'rgba(0, 166, 231, 1)', // Red for net errors
+                backgroundColor: "rgba(0, 166, 231, 1)", // Blue for net errors
+                barThickness: 16,
             },
             {
                 label: 'Wall Errors',
                 data: players.map((player) => player.stats.wallErrors),
-                backgroundColor: 'rgba(0, 166, 231, 0.3)', // Blue for wall errors
+                backgroundColor: 'rgba(0, 166, 231, 0.3)', // Light blue for wall errors
+                barThickness: 16,
             },
         ],
     };
@@ -35,50 +38,50 @@ const TotalErrorsChart = ({ players }) => {
         plugins: {
             legend: {
                 display: true,
-                position: 'bottom', // Place the legend below the chart
+                position: 'bottom', // Legend below the chart
                 labels: {
-                    color: 'rgba(255, 255, 255, 1)', // Set the color for the legend text
-                    font: {
-                        weight: 'bold', // Optionally make the legend text bold
-                    },
+                    usePointStyle: true, // Use dots in legend
                 },
             },
+            tooltip: { enabled: false }, // Disable tooltips
             datalabels: {
-                display: (context) => context.datasetIndex === 1, // Only show labels for the last dataset
+                display: true,
+                anchor: 'start', // Position labels to the right of bars
+                align: 'end',
                 formatter: (value, context) => {
-                    // Calculate total errors for each bar
-                    const total =
-                        context.chart.data.datasets.reduce(
-                            (sum, dataset) => sum + dataset.data[context.dataIndex],
-                            0
-                        );
-                    return total; // Show total errors
+                    const totalErrors =
+                        players[context.dataIndex].stats.netErrors +
+                        players[context.dataIndex].stats.wallErrors;
+                    return totalErrors;
                 },
-                anchor: 'end', // Anchors the label to the end of the bar
-                align: 'end',  // Aligns the text to the end (right) of the chart
-                color: 'rgba(255, 255, 255, 1)', // Text color
+                color: '#fff', // Text color
                 font: {
-                    weight: 'bold',
+                    family: 'Space Grotesk',
+                    size: 14,
+                    weight: '400',
                 },
-                offset: 10, // Moves the label outside the bar to the right
-            },
-            tooltip: {
-                enabled: true, // Enable tooltips
             },
         },
         scales: {
             x: {
-                stacked: true, // Stack the bars horizontally
+                stacked: true, // Stack bars horizontally
                 beginAtZero: true,
                 ticks: {
-                    display: false, // Show x-axis ticks
+                    display: false, // Hide x-axis ticks
                 },
+                grid: { display: false }, // Hide grid lines
             },
             y: {
-                stacked: true, // Stack the bars vertically
+                stacked: true, // Stack bars vertically
                 ticks: {
-                    color: (context) => players[context.index].color, // Use player-specific colors for labels
+                    color: (context) => players[context.index]?.color || "#000", // Player-specific colors for labels
+                    font: {
+                        family: 'Space Grotesk', // Set font family
+                        size: 14, // Set font size
+                        weight: '400', // Set font weight
+                    },
                 },
+                grid: { display: false }, // Hide grid lines
             },
         },
     };
