@@ -1,0 +1,38 @@
+.loader-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Make sure it's fixed on the screen */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(3, 16, 21, 1); /* Optional: add a slight background */
+  z-index: 9999; /* Ensure it's on top of other content */
+}
+
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  background: radial-gradient(circle closest-side, rgba(221, 3, 132, 1) 94%, #0000)
+    right/calc(200% - 1em) 100%;
+  animation: l24 1s infinite alternate linear;
+}
+
+.loader::before {
+  content: "Loading...";
+  line-height: 1em;
+  color: #0000;
+  background: inherit;
+  background-image: radial-gradient(circle closest-side, rgba(0, 166, 231, 1) 94%, rgba(221, 3, 132, 1));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes l24 {
+  100% {
+    background-position: left;
+  }
+}

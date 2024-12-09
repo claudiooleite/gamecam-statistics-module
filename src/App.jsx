@@ -23,6 +23,7 @@ import { PiPersonSimpleRunLight } from "react-icons/pi";
 import { CiBasketball } from "react-icons/ci";
 
 import { Chart as ChartJS, CategoryScale, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import LoadingScreen from './components/LoadingScreen';
 
 // Register the necessary components
 ChartJS.register(CategoryScale, LinearScale, ArcElement, BarElement, Title, Tooltip, Legend);
@@ -36,7 +37,7 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(true)
+
 
     const id = setTimeout(() => {
       setData(
@@ -52,7 +53,7 @@ function App() {
         }
       )
       setLoading(false)
-    }, 1) // Change time for showing 
+    }, 3000) // Change time for showing 
 
     return () => clearTimeout(id)
   }, [])
@@ -68,7 +69,7 @@ function App() {
   if (loading) {
     return (
       <>
-        <h1>loading...</h1>
+        <LoadingScreen />
       </>
     )
   }
