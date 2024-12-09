@@ -219,6 +219,30 @@ function App() {
           {/* <ChartCard title="Total Errors">
             <TotalErrorsChart players={data.players} />
           </ChartCard> */}
+          <ChartCard title="Time in Dead Zone">
+            <div className='dead-zone'>
+              {/* Left: Player names */}
+              <div className="player-names">
+                {data.players.map((player, index) => (
+                  <div
+                    key={index}
+                    className="player-name"
+                    style={{ color: player.color }}
+                  >
+                    <p>{player.name}</p>
+                  </div>
+                ))}
+              </div>
+              {/* Right: Distances */}
+              <div className="distance-runs">
+                {data.players.map((player, index) => (
+                  <div key={index} className="dead-zone-time">
+                    <p className='dead-p'>{player.stats.timeInDeadZone}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ChartCard>
 
           <ChartCard title="Ball Possession">
             <BallPossessionChart players={data.players} />

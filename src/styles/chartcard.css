@@ -20,6 +20,7 @@
 .chart-card-title {
   font-size: 1rem;
   font-family: "Archivo", sans-serif;
+  margin-bottom: 20px;
 }
 
 .chart-card-content {
@@ -31,8 +32,11 @@
 }
 
 .running-distance-container {
-  display: flex;
-  gap: 6px;
+  display: flex
+;
+    gap: 6px;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .player-names, .distance-runs{
