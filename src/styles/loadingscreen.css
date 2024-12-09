@@ -1,5 +1,6 @@
 .loader-main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed; /* Make sure it's fixed on the screen */
@@ -10,13 +11,19 @@
   background-color: rgba(3, 16, 21, 1); /* Optional: add a slight background */
   z-index: 9999; /* Ensure it's on top of other content */
 }
-
+.image-logo {
+  width: 80%;
+}
 .loader {
   width: fit-content;
   font-weight: bold;
   font-family: monospace;
   font-size: 30px;
-  background: radial-gradient(circle closest-side, rgba(221, 3, 132, 1) 94%, #0000)
+  background: radial-gradient(
+      circle closest-side,
+      rgba(221, 3, 132, 1) 94%,
+      #0000
+    )
     right/calc(200% - 1em) 100%;
   animation: l24 1s infinite alternate linear;
 }
@@ -26,7 +33,11 @@
   line-height: 1em;
   color: #0000;
   background: inherit;
-  background-image: radial-gradient(circle closest-side, rgba(0, 166, 231, 1) 94%, rgba(221, 3, 132, 1));
+  background-image: radial-gradient(
+    circle closest-side,
+    rgba(0, 166, 231, 1) 94%,
+    rgba(221, 3, 132, 1)
+  );
   -webkit-background-clip: text;
   background-clip: text;
 }
