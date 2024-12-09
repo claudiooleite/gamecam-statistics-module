@@ -81,4 +81,11 @@ export const dummyData = {
       ],
     },
   ],
+  game: {
+    id: 1,
+    court: 5,
+    date: "Tuesday 24 Sep 2024",
+    length: "60 min",
+    time: "20:30",
+  },
 };

@@ -42,6 +42,7 @@ function App() {
     const id = setTimeout(() => {
       setData(
         {
+          game: dummyData.game,
           players: [
             ...dummyData.teams[0].players,
             ...dummyData.teams[1].players,
@@ -80,7 +81,7 @@ function App() {
       <h1 className='headline-medium'>Your Videometrics</h1>
       <h2 className='title-medium team'>Valhala Padel</h2>
       <div className='court-info-div'>
-        <h3 className='court5'>Court 5</h3>
+        <h3 className='court5'>Court {data.game.court}</h3>
         <h4 className='title-medium'>Camera ID 348</h4>
       </div>
 
@@ -88,12 +89,12 @@ function App() {
 
       <div className='court-info-div  game-length'>
         <h4 className='title-medium'>Game length</h4>
-        <h4 className='title-medium'>Tuesday 24 Sep 2024</h4>
+        <h4 className="title-medium">{data.game.date}</h4>
       </div>
 
       <div className='court-info-div'>
-        <h3 className='court5 pink'>60 min</h3>
-        <h3 className='court5 pink'>20:30</h3>
+        <h3 className='court5 pink'>{data.game.length}</h3>
+        <h3 className='court5 pink'>{data.game.time}</h3>
       </div>
 
       <div className="gradient-line"></div>
