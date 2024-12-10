@@ -1,43 +1,9 @@
 import { useState } from "react";
 import "../styles/slambutton.css";
 
-// Add endpoint when provided
-const SlamButton = ({ apiEndpoint = null }) => {
+const SlamButton = ({ apiEndpoint = null, highlightsFrames, setHighlightsFrames }) => {
     const [isSaving, setIsSaving] = useState(false);
-    const [highlightsFrames, setHighlightsFrames] = useState({});
-
-    // const handleSave = async () => {
-    //     setIsSaving(true);
-    //     const currentDate = new Date();
-    //     const timestamp = currentDate.toISOString();
-
-    //     try {
-    //         // Send data to the server
-    //         const response = await fetch(apiEndpoint, {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({ timestamp }),
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error("Failed to save highlight");
-    //         }
-
-    //         // Update the local state after successful save
-    //         setHighlightsFrames((prev) => ({
-    //             ...prev,
-    //             [timestamp]: currentDate,
-    //         }));
-    //     } catch (error) {
-    //         console.error("Error saving highlight:", error);
-    //         alert("Failed to save highlight. Please try again.");
-    //     } finally {
-    //         setIsSaving(false);
-    //     }
-    // };
-
+    const [sentMessages, setSentMessages] = useState([]); // State to store simulated backend messages
 
     const handleSave = () => {
         setIsSaving(true);
@@ -51,10 +17,15 @@ const SlamButton = ({ apiEndpoint = null }) => {
             [timestamp]: currentDate,
         }));
 
+        // Simulate sending to backend
+        setSentMessages((prev) => [
+            ...prev,
+            `Sending timestamp: ${timestamp} to ${apiEndpoint || "backend (mocked)"}`,
+        ]);
+
         // Simulate a delay to mimic saving behavior
         setTimeout(() => setIsSaving(false), 500);
     };
-
 
     const renderedHighlights = Object.entries(highlightsFrames).map(([key, value]) => {
         const dateObj = new Date(value);
@@ -65,12 +36,19 @@ const SlamButton = ({ apiEndpoint = null }) => {
             <div key={key} className="highlight-item">
                 <h3>Valhall</h3>
                 <p>
-                    <span className="highlight-date">{formattedDate}</span>{' '}
+                    <span className="highlight-date">{formattedDate}</span>{" "}
                     <span className="highlight-time">{formattedTime}</span>
                 </p>
             </div>
         );
     });
+
+    const renderedMessages = sentMessages.map((message, index) => (
+        <div key={index} className="sent-message">
+            <p>{message}</p>
+        </div>
+    ));
+
     return (
         <>
             <button
@@ -85,9 +63,10 @@ const SlamButton = ({ apiEndpoint = null }) => {
 
             {renderedHighlights}
 
-
+            <h3 className="sent-messages-title">Backend Messages</h3>
+            <div className="sent-messages">{renderedMessages}</div>
         </>
     );
-}
+};
 
 export default SlamButton;

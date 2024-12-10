@@ -7,6 +7,7 @@ import { FaChevronUp } from "react-icons/fa";
 
 function Highlights() {
     const [showHighlights, setShowHighlights] = useState(true)
+    const [highlightsFrames, setHighlightsFrames] = useState({});
 
     const toogleShowHighlights = () => setShowHighlights(prev => !prev)
 
@@ -19,7 +20,10 @@ function Highlights() {
                 </p>
             </div>
 
-            {showHighlights && <SlamButton />}
+            {showHighlights && <SlamButton
+                highlightsFrames={highlightsFrames}
+                setHighlightsFrames={setHighlightsFrames}
+            />}
 
         </div>
     )
