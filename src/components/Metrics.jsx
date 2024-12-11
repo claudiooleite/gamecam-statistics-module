@@ -1,8 +1,8 @@
 import { useGame } from '../gameContext/GameContext';
-import { useState, useEffect } from 'react';
+
 import ChartCard from './charts/ChartCard';
 import RunningDistanceChart from './charts/RunningDistanceChart';
-import BallPossessionChart from './charts/BallPossessionChart';
+import BallPossessionChart from './charts/BallPossessionchart';
 import FlexibleCard from './FlexibleCard';
 import Footer from './Footer';
 
