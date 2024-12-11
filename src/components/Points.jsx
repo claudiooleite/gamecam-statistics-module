@@ -21,7 +21,7 @@ function Points() {
 
     return (
         <div className="points-card">
-            <div div className="points-div" >
+            <div className="points-div" >
                 <h1 className="points-title">Points</h1>
                 <p onClick={handleShowPoints}>
                     <FaChevronUp style={{ fontSize: '20px' }} />

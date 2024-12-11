@@ -1,0 +1,14 @@
+.options-div {
+  display: flex;
+  justify-content: space-between; /* Distribute space between buttons */
+  width: 100%; /* Ensure the container spans the full width */
+}
+
+.options-div button:first-child {
+  margin-right: auto; /* Push the first button to the left */
+}
+
+.options-div button {
+  
+  padding: 8px 16px;
+}
