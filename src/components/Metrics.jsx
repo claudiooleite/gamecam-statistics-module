@@ -2,7 +2,7 @@ import { useGame } from '../gameContext/GameContext';
 
 import ChartCard from './charts/ChartCard';
 import RunningDistanceChart from './charts/RunningDistanceChart';
-import BallPossessionChart from './charts/BallPossessionchart';
+// import BallPossessionChart from './charts/BallPossessionchart';
 import FlexibleCard from './FlexibleCard';
 import Footer from './Footer';
 
@@ -141,9 +141,9 @@ const Metrics = () => {
                         </div>
                     </ChartCard>
 
-                    <ChartCard title="Ball Possession">
+                    {/* <ChartCard title="Ball Possession">
                         <BallPossessionChart players={data.teams[0].players} />
-                    </ChartCard>
+                    </ChartCard> */}
                 </div>
                 <FlexibleCard>
                     <Footer />
